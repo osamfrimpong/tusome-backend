@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('question_id');
         });
     }
 

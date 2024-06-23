@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('question_id');
+            $table->string('status');
+            $table->integer('score');
+            $table->timestamp('completed_at')->nullable();
         });
     }
 
