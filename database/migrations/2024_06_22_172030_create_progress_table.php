@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('question_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->string('status');
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->timestamp('completed_at')->nullable();
         });
     }

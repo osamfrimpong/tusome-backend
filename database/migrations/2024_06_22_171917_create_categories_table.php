@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreignId('parent_id')->references('id')->on('categories')->nullable();
         });
     }
 
