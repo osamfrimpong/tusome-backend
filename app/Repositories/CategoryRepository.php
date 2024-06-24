@@ -17,7 +17,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         return Category::create($data);
     }
 
-    public function update($id, array $data)
+    public function update(array $data, $id)
     {
         $category = Category::findOrFail($id);
         return $category->update($data);
