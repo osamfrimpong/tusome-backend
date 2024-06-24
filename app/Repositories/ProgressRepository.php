@@ -9,7 +9,7 @@ class ProgressRepository implements ProgressRepositoryInterface
 {
     public function all($userId)
     {
-        return Progress::where('user_id',$userId)->get();
+        return Progress::where('user_id',$userId)->paginate(50);
     }
 
     public function find($id)

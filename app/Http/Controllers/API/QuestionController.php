@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Bookmark;
-use App\Services\BookmarkService;
+use App\Http\Controllers\Controller;
+use App\Models\Question;
+use App\Services\QuestionService;
 use Illuminate\Http\Request;
 
-class BookmarkController extends Controller
+class QuestionController extends Controller
 {
-    protected BookmarkService $bookmarkService;
+    protected QuestionService $questionService;
 
-    public function __construct(BookmarkService $bookmarkService)
+    public function __construct(QuestionService $questionService)
     {
-        $this->bookmarkService = $bookmarkService;
+        $this->questionService = $questionService;
     }
-
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +42,7 @@ class BookmarkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bookmark $bookmark)
+    public function show(Question $question)
     {
         //
     }
@@ -50,7 +50,7 @@ class BookmarkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bookmark $bookmark)
+    public function edit(Question $question)
     {
         //
     }
@@ -58,7 +58,7 @@ class BookmarkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bookmark $bookmark)
+    public function update(Request $request, Question $question)
     {
         //
     }
@@ -66,7 +66,7 @@ class BookmarkController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bookmark $bookmark)
+    public function destroy(Question $question)
     {
         //
     }

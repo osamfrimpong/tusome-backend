@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Progress;
-use App\Services\ProgressService;
+use App\Http\Controllers\Controller;
+use App\Models\Bookmark;
+use App\Services\BookmarkService;
 use Illuminate\Http\Request;
 
-class ProgressController extends Controller
+class BookmarkController extends Controller
 {
+    protected BookmarkService $bookmarkService;
 
-    protected ProgressService $progressService;
-
-    public function __construct(ProgressService $progressService)
+    public function __construct(BookmarkService $bookmarkService)
     {
-        $this->progressService = $progressService;
+        $this->bookmarkService = $bookmarkService;
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +43,7 @@ class ProgressController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Progress $progress)
+    public function show(Bookmark $bookmark)
     {
         //
     }
@@ -50,7 +51,7 @@ class ProgressController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Progress $progress)
+    public function edit(Bookmark $bookmark)
     {
         //
     }
@@ -58,7 +59,7 @@ class ProgressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Progress $progress)
+    public function update(Request $request, Bookmark $bookmark)
     {
         //
     }
@@ -66,7 +67,7 @@ class ProgressController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Progress $progress)
+    public function destroy(Bookmark $bookmark)
     {
         //
     }

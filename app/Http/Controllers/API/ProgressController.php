@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Category;
-use App\Services\CategoryService;
+use App\Http\Controllers\Controller;
+use App\Models\Progress;
+use App\Services\ProgressService;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProgressController extends Controller
 {
 
-    protected CategoryService $categoryService;
+    protected ProgressService $progressService;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(ProgressService $progressService)
     {
-        $this->categoryService = $categoryService;
+        $this->progressService = $progressService;
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +43,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Progress $progress)
     {
         //
     }
@@ -50,7 +51,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Progress $progress)
     {
         //
     }
@@ -58,7 +59,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Progress $progress)
     {
         //
     }
@@ -66,7 +67,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Progress $progress)
     {
         //
     }
