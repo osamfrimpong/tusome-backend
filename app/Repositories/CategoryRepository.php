@@ -3,30 +3,34 @@
 namespace App\Repositories;
 
 use App\Interfaces\CategoryRepositoryInterface;
+use App\Models\Category;
 
-class CategoryRepository implements CategoryRepositoryInterface{
+class CategoryRepository implements CategoryRepositoryInterface
+{
     public function all()
     {
-        // TODO: Implement all() method.
-    }
-
-    public function find($id)
-    {
-        // TODO: Implement find() method.
+        return Category::all();
     }
 
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        return Category::create($data);
     }
 
-    public function update(array $data, $id)
+    public function update($id, array $data)
     {
-        // TODO: Implement update() method.
+        $category = Category::findOrFail($id);
+        return $category->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $category = Category::findOrFail($id);
+        return $category->delete();
+    }
+
+    public function find($id)
+    {
+        return Category::findOrFail($id);
     }
 }

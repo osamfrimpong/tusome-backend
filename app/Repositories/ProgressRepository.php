@@ -3,32 +3,34 @@
 namespace App\Repositories;
 
 use App\Interfaces\ProgressRepositoryInterface;
+use App\Models\Progress;
 
 class ProgressRepository implements ProgressRepositoryInterface
 {
-
-    public function all()
+    public function all($userId)
     {
-        // TODO: Implement all() method.
+        return Progress::where('user_id',$userId)->get();
     }
 
     public function find($id)
     {
-        // TODO: Implement find() method.
+        return Progress::findOrFail($id);
     }
 
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        return Progress::create($data);
     }
 
     public function update(array $data, $id)
     {
-        // TODO: Implement update() method.
+        $progress = Progress::findOrFail($id);
+        return $progress->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $progress = Progress::findOrFail($id);
+        return $progress->delete();
     }
 }
