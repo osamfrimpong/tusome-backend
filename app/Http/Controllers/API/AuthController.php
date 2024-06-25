@@ -29,7 +29,7 @@ class AuthController extends Controller
             return response()->json(['state' => 'error', 'message' => $validation->errors()->all()]);
         }
 
-        return $this->authService->login(['username' => $request->username, 'password' => $request->password]);
+        return $this->authService->login(['email' => $request->email, 'password' => $request->password]);
     }
 
     public function register(Request $request)
