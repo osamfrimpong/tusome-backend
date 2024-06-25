@@ -3,31 +3,34 @@
 namespace App\Repositories;
 
 use App\Interfaces\QuestionRepositoryInterface;
+use App\Models\Question;
 
-class QuestionRepository implements QuestionRepositoryInterface{
-
+class QuestionRepository implements QuestionRepositoryInterface
+{
     public function all()
     {
-        // TODO: Implement all() method.
+        return Question::all()->paginate(100);
     }
 
     public function find($id)
     {
-        // TODO: Implement find() method.
+        return Question::findOrFail($id);
     }
 
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        return Question::create($data);
     }
 
     public function update(array $data, $id)
     {
-        // TODO: Implement update() method.
+        $question = Question::findOrFail($id);
+        return $question->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $question = Question::findOrFail($id);
+        return $question->delete();
     }
 }

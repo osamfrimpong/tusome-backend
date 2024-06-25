@@ -14,6 +14,14 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->string('subject');
+            $table->integer('year');
+            $table->json('question_content');
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('published_at')->nullable();
+            $table->softDeletes();
         });
     }
 

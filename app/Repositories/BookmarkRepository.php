@@ -8,7 +8,7 @@ use App\Models\Bookmark;
 class BookmarkRepository implements BookmarkRepositoryInterface{
 
     public function all($userId){
-        return Bookmark::where('user_id',$userId)->get();
+        return Bookmark::where('user_id',$userId)->paginate(50);
     }
 
     public function create(array $data){
