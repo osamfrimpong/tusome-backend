@@ -9,7 +9,7 @@ class AuthRepository implements AuthRepositoryInterface
 {
     public function login(array $credentials)
     {
-        return User::where('username', $credentials["username"])->first();
+        return User::where('email', $credentials["email"])->first();
 
     }
 
