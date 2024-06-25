@@ -35,6 +35,7 @@ class CategoryController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'parentId' => 'nullable|numeric',
+            'isActive' => 'required|boolean',
 
         ]);
 
@@ -45,6 +46,7 @@ class CategoryController extends Controller
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'parent_id' => $request->get('parentId'),
+            'is_active' => $request->get('isActive'),
         ];
 
         return $this->categoryService->create($data);
@@ -70,6 +72,7 @@ class CategoryController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'parentId' => 'nullable|numeric',
+            'isActive' => 'required|boolean',
 
         ]);
 
@@ -80,6 +83,7 @@ class CategoryController extends Controller
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'parent_id' => $request->get('parentId'),
+            'is_active' => $request->get('isActive'),
         ];
 
         return $this->categoryService->update($data, $category->id);
