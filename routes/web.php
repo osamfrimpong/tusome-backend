@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProfileController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\API\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('auth:web')->prefix('/admin')->name('admin.')->group(function () {
+Route::middleware(['auth:web','admin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'home'])->name('home');
     Route::resource('categories', CategoryController::class);
     Route::resource('questions', QuestionController::class);

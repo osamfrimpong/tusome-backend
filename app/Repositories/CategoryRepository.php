@@ -9,7 +9,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function all()
     {
-        return Category::all()->paginate(100);
+        return Category::paginate(100);
     }
 
     public function create(array $data)
