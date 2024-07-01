@@ -22,7 +22,19 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return $this->questionService->getAll();
+        $result =  $this->questionService->getAll();
+
+        if (request()->expectsJson()) {
+            // API response
+            return response()->json($result);
+        }
+
+        // Web response
+        if ($result['status'] === 'success') {
+            return view('admin.users.index', ['users' => $result['data']]);
+        } else {
+            return view('admin.users.index')->with('error', $result['message']);
+        }
     }
 
     /**

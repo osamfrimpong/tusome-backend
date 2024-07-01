@@ -62,6 +62,14 @@
                             <span class="hide-menu">Users</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('logout') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-logout"></i>
+                </span>
+                            <span class="hide-menu">Logout</span>
+                        </a>
+                    </li>
                 </ul>
 
             </nav>
