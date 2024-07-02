@@ -49,4 +49,20 @@ class Question extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function getQuestionContentAttribute()
+    {
+        return json_decode($this->attributes['question_content']);
+    }
+
+
+    public function setQuestionContentAttribute($value)
+    {
+       return $this->attributes['question_content'] = json_encode($value);
+    }
 }

@@ -11,6 +11,11 @@
             <p><strong>Subject:</strong> {{ $question->subject }}</p>
             <p><strong>Year:</strong> {{ $question->year }}</p>
             <p><strong>Content:</strong> {{ $question->question_content }}</p>
+            <p>
+                @foreach(json_decode($question->question_content) as $question)
+                    {{$question->question_number}}
+                @endforeach
+            </p>
             <p><strong>Active:</strong> {{ $question->is_active ? 'Yes' : 'No' }}</p>
             <p><strong>Published At:</strong> {{ $question->published_at ? $question->published_at->format('d-m-Y H:i:s') : 'N/A' }}</p>
             <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-primary">Edit</a>

@@ -22,11 +22,23 @@
                 </div>
                 <div class="form-group">
                     <label for="year">Year</label>
-                    <input type="number" name="year" id="year" class="form-control" required>
+                    <select name="year" id="year" class="form-control" required>
+                        @php
+                            $currentYear = date('Y');
+                        @endphp
+                        @for ($year = $currentYear; $year >= 2000; $year--)
+                            <option
+                                value="{{ $year }}" {{ (old('year')?? request()->get('year')) == $year? 'selected' : '' }}>{{ $year }}</option>
+                        @endfor
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="question_content">Question Content</label>
-                    <textarea name="question_content" id="question_content" class="form-control" required></textarea>
+                    <textarea name="question_content" id="question_content" class="form-control" required
+                              placeholder='[{question_number: 1, question_details: " What is xyz", answer_options: {a:
+                    xyz, b: xyz, c: xyz, d: xyz, e: xyz}, correct_option: c, year: xxxx, subject: subjectNameOrId,
+                    category_id: idFromDatabase}]'></textarea>
                 </div>
                 <div class="form-group">
                     <label for="is_active">Active</label>

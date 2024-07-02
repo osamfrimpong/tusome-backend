@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Interfaces\QuestionRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionService{
     protected QuestionRepositoryInterface $questionRepository;
@@ -28,6 +29,8 @@ class QuestionService{
      * Creates a new question with the provided data and returns it
      */
     public function create(array $data){
+        $user = Auth::user();
+        $data['user_id'] = $user->id;
         $question = $this->questionRepository->create($data);
         if($question){
             return ['status' => 'success', 'data' => $question];
@@ -52,7 +55,7 @@ class QuestionService{
      * Updates the specified question with the provided data and returns the updated question
      */
     public function update(array $data, $id){
-        $question = $this->questionRepository->update($id, $data);
+        $question = $this->questionRepository->update($data, $id);
         if($question){
             return ['status' => 'success', 'data' => $question];
         }
