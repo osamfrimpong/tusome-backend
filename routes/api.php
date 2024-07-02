@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\LandingPageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//User Dashboard
+//Route::middleware('auth:sanctum')->prefix('/dashboard')->group(function (Request $request) {
+//    return $request->user();
+//})->name('dashboard.');
 
 
+//Admin Dashboard
+
+
+//Landing page
+Route::get('/', [LandingPageController::class, 'home'])->name('home');
+Route::get('/categories', [LandingPageController::class, 'categories'])->name('categories');
 
 //Authentication
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');

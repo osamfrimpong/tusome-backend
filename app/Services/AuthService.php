@@ -14,7 +14,7 @@ class AuthService
 
     public function __construct(AuthRepositoryInterface $authRepository)
     {
-        $this->authRepository = $authRepository;
+        $this->authRepository = $authRepository; 
     }
 
     public function login(array $credentials): JsonResponse
@@ -47,7 +47,7 @@ class AuthService
                 'access_token' => $user->createToken('custom-token')->plainTextToken,
             ]);
         } else {
-            return response()->json(['status' => 'fail', 'message' => "Could Create Account"]);
+            return response()->json(['status' => 'fail', 'message' => "Could not Create Account"]);
         }
     }
 
