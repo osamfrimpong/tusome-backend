@@ -12,7 +12,7 @@
             <p><strong>Year:</strong> {{ $question->year }}</p>
             <p><strong>Content:</strong></p>
                 @foreach($question->question_content as $questionContent)
-                <p>Q{{$questionContent['question_number']}}.</p>
+                <b>Q{{$questionContent['question_number']}}.</b>
                     <p>{{$questionContent['question_details']}}</p>
                     <ul>
                         @foreach($questionContent['answer_options'] as $key => $options)

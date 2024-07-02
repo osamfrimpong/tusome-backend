@@ -23,6 +23,15 @@
                             <a href="{{route('login')}}" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                 <img src="{{ asset('admin-assets/images/logos/dark-logo.svg') }}" width="180" alt="">
                             </a>
+                            @if ($errors->any())
+                                <div class="alert alert-danger mt-3">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="mb-3">

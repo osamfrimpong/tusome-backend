@@ -6,7 +6,7 @@
             Create Question
         </div>
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger mb-3 mt-3">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

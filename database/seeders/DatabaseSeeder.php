@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
              'password' => Hash::make('randomBytes'),
              'user_type' => 'admin',
          ]);
+
+         $this->call(CategorySeeder::class);
     }
 }
