@@ -56,7 +56,14 @@ class QuestionController extends Controller
             'category_id' => 'required|integer',
             'subject' => 'required|string',
             'year' => 'required|integer',
-            'question_content' => 'required|string',
+            'question_content' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (json_decode($value) === null) {
+                        $fail('The '.$attribute.' must be a valid JSON string.');
+                    }
+                },
+            ],
             'is_active' => 'required|boolean',
             'published_at' => 'nullable|date',
         ]);
@@ -68,7 +75,8 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'subject', 'year', 'question_content', 'is_active', 'published_at']);
+        $data = $request->only(['category_id', 'subject', 'year', 'is_active', 'published_at']);
+        $data['question_content'] = json_decode($request->get('question_content'), true);
 
         $result = $this->questionService->create($data);
 
@@ -116,7 +124,14 @@ class QuestionController extends Controller
             'category_id' => 'required|integer',
             'subject' => 'required|string',
             'year' => 'required|integer',
-            'question_content' => 'required|string',
+            'question_content' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (json_decode($value) === null) {
+                        $fail('The '.$attribute.' must be a valid JSON string.');
+                    }
+                },
+            ],
             'is_active' => 'required|boolean',
             'published_at' => 'nullable|date',
         ]);
@@ -128,7 +143,8 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'subject', 'year', 'question_content', 'is_active', 'published_at']);
+        $data = $request->only(['category_id', 'subject', 'year', 'is_active', 'published_at']);
+        $data['question_content'] = json_decode($request->get('question_content'), true);
 
         $result = $this->questionService->update($data, $question->id);
 

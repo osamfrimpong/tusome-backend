@@ -5,6 +5,15 @@
         <div class="card-header">
             Create Question
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card-body">
             <form action="{{ route('admin.questions.store') }}" method="POST">
                 @csrf

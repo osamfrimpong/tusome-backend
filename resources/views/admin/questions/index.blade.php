@@ -35,7 +35,7 @@
                             <td>{{ $question->category->name }}</td>
                             <td>{{ $question->subject }}</td>
                             <td>{{ $question->year }}</td>
-                            <td>{{ $question->question_content }}</td>
+                            <td>Click View</td>
                             <td>{{ $question->is_active ? 'Yes' : 'No' }}</td>
                             <td>{{ $question->published_at ? $question->published_at->format('d-m-Y') : 'N/A' }}</td>
                             <td>
