@@ -40,7 +40,7 @@
                                         <input class="form-check-input primary" type="checkbox" value=""
                                                id="flexCheckChecked" name="remember">
                                         <label class="form-check-label text-dark" for="flexCheckChecked">
-                                            Remeber this Device
+                                            Remember this Device
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
