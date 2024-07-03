@@ -15,7 +15,7 @@ class Question extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'subject',
+        'sub_category_id',
         'year',
         'question_content',
         'is_active',

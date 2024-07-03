@@ -206,7 +206,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         // Recursive function to create categories and subcategories
-        function createCategories(array $categories, $parentId = null) {
+        function createCategories(array $categories, $parentId = null)
+        {
             foreach ($categories as $categoryData) {
                 $children = $categoryData['children'] ?? [];
                 unset($categoryData['children']);
