@@ -32,13 +32,13 @@
                 <label for="sub_category_id">Sub Category</label>
                 <select name="sub_category_id" id="sub_category_id" class="form-control" required>
                     <option value="">Select Sub Category</option>
-                    @if($subCategories)
+                  
                         @foreach($subCategories as $subCategory)
                             <option value="{{ $subCategory->id }}" {{ old('sub_category_id', request()->input('sub_category_id')) == $subCategory->id ? 'selected' : '' }}>
                                 {{ $subCategory->name }}
                             </option>
                         @endforeach
-                    @endif
+
                 </select>
             </div>
             <div class="form-group">
@@ -77,46 +77,8 @@
         </form>
     </div>
 </div>
+@endsection
 
 @section('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryId = document.getElementById('category_id').value;
-    if (categoryId) {
-        fetch('/get-subcategories/' + categoryId)
-            .then(response => response.json())
-            .then(data => {
-                const subCategorySelect = document.getElementById('sub_category_id');
-                subCategorySelect.innerHTML = '<option value="">Select Sub Category</option>';
-                data.forEach(function(subCategory) {
-                    const option = document.createElement('option');
-                    option.value = subCategory.id;
-                    option.text = subCategory.name;
-                    subCategorySelect.appendChild(option);
-                });
-            });
-    }
-
-    document.getElementById('category_id').addEventListener('change', function() {
-        const categoryId = this.value;
-        if (categoryId) {
-            fetch('/get-subcategories/' + categoryId)
-                .then(response => response.json())
-                .then(data => {
-                    const subCategorySelect = document.getElementById('sub_category_id');
-                    subCategorySelect.innerHTML = '<option value="">Select Sub Category</option>';
-                    data.forEach(function(subCategory) {
-                        const option = document.createElement('option');
-                        option.value = subCategory.id;
-                        option.text = subCategory.name;
-                        subCategorySelect.appendChild(option);
-                    });
-                });
-        } else {
-            document.getElementById('sub_category_id').innerHTML = '<option value="">Select Sub Category</option>';
-        }
-    });
-});
-</script>
-@endsection
+    <script src="{{ asset('js/category.js') }}"></script>
 @endsection

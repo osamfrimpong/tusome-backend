@@ -176,10 +176,4 @@ class QuestionController extends Controller
             return redirect()->back()->with('error', $result['message']);
         }
     }
-
-    public function getSubCategories($categoryId)
-    {
-        $subCategories = Category::where('parent_id', $categoryId)->get();
-        return response()->json($subCategories);
-    }
 }
