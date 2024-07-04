@@ -28,6 +28,7 @@
 
             <p><strong>Active:</strong> {{ $question->is_active ? 'Yes' : 'No' }}</p>
             <p><strong>Published At:</strong> {{ $question->published_at ? $question->published_at->format('d-m-Y H:i:s') : 'N/A' }}</p>
+
             <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-primary">Edit</a>
             <form action="{{ route('admin.questions.destroy', $question->id) }}" method="POST" style="display: inline;">
                 @csrf
