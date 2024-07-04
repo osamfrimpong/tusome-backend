@@ -163,9 +163,8 @@ class CategoryController extends Controller
         }
     }
 
-    public function getSubcategories($categoryId)
+    public function getSubcategories(Category $categoryId)
     {
-        $subcategories = Category::where('parent_id', $categoryId)->get();
-        return response()->json($subcategories);
+        return response()->json($categoryId->children);
     }
 }

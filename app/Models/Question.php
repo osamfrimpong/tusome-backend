@@ -15,7 +15,7 @@ class Question extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'sub_category_id',
+        'category_details',
         'year',
         'question_content',
         'is_active',
@@ -24,6 +24,7 @@ class Question extends Model
 
     protected $casts = [
         'question_content' => 'array',
+        'category_details' => 'array',
         'is_active' => 'boolean',
         'published_at' => 'datetime',
     ];
@@ -34,7 +35,7 @@ class Question extends Model
         'published_at',
     ];
 
-    protected $appends = [];
+    protected $appends = ['formatted_category_details'];
 
     protected $hidden = [];
 
@@ -52,7 +53,29 @@ class Question extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+
+
+    public function getFormattedCategoryDetailsAttribute()
+    {
+        $formattedDetails = [];
+        $categoryDetails = $this->category_details;
+
+        if (is_array($categoryDetails)) {
+            foreach ($categoryDetails as $key => $value) {
+                $category = Category::find($value);
+                if ($category) {
+                    $formattedDetails[$key] = [
+                        'id' => $category->id,
+                        'name' => $category->name
+                    ];
+                }
+            }
+        }
+
+        return $formattedDetails;
     }
 
 
