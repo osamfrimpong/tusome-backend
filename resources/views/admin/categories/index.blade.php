@@ -12,7 +12,7 @@
             {{ session('success') }}
         </div>
     @endif
-
+    <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -27,7 +27,7 @@
                     <td><a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
                     <td>{{ $category->description }}</td>
                     <td>
-                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning mb-2 mb-sm-0 mb-md-0 mb-lg-0 mb-xl-0 mb-xxl-0">Edit</a>
                         <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
@@ -38,5 +38,6 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
 @endsection

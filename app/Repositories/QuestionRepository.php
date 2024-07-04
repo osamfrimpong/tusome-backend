@@ -9,7 +9,7 @@ class QuestionRepository implements QuestionRepositoryInterface
 {
     public function all()
     {
-        return Question::paginate(100);
+        return Question::with('category')->paginate(100);
     }
 
     public function find($id)

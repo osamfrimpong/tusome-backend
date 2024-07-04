@@ -114,36 +114,216 @@ class CategorySeeder extends Seeder
                     'description' => 'University past questions in Ghana',
                     'is_active' => true,
                     'children' => [
-                        ['name' => 'Computer Science', 'description' => 'Computer Science past questions', 'is_active' => true],
-                        ['name' => 'Business Administration', 'description' => 'Business Administration past questions', 'is_active' => true],
-                        ['name' => 'Engineering', 'description' => 'Engineering past questions', 'is_active' => true],
-                        ['name' => 'Medicine', 'description' => 'Medicine past questions', 'is_active' => true],
-                        ['name' => 'Law', 'description' => 'Law past questions', 'is_active' => true],
-                        ['name' => 'Economics', 'description' => 'Economics past questions', 'is_active' => true],
-                        ['name' => 'Accounting', 'description' => 'Accounting past questions', 'is_active' => true],
-                        ['name' => 'Marketing', 'description' => 'Marketing past questions', 'is_active' => true],
-                        ['name' => 'Nursing', 'description' => 'Nursing past questions', 'is_active' => true],
-                        ['name' => 'Education', 'description' => 'Education past questions', 'is_active' => true],
-                        // Add other courses as needed
+                        [
+                            'name' => 'Computer Science',
+                            'description' => 'Computer Science past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Data Structures', 'description' => 'Data Structures past questions', 'is_active' => true],
+                                ['name' => 'Algorithms', 'description' => 'Algorithms past questions', 'is_active' => true],
+                                ['name' => 'Operating Systems', 'description' => 'Operating Systems past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Business Administration',
+                            'description' => 'Business Administration past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Management', 'description' => 'Management past questions', 'is_active' => true],
+                                ['name' => 'Human Resources', 'description' => 'Human Resources past questions', 'is_active' => true],
+                                ['name' => 'Marketing', 'description' => 'Marketing past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Engineering',
+                            'description' => 'Engineering past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Mechanical Engineering', 'description' => 'Mechanical Engineering past questions', 'is_active' => true],
+                                ['name' => 'Electrical Engineering', 'description' => 'Electrical Engineering past questions', 'is_active' => true],
+                                ['name' => 'Civil Engineering', 'description' => 'Civil Engineering past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Medicine',
+                            'description' => 'Medicine past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Anatomy', 'description' => 'Anatomy past questions', 'is_active' => true],
+                                ['name' => 'Physiology', 'description' => 'Physiology past questions', 'is_active' => true],
+                                ['name' => 'Pharmacology', 'description' => 'Pharmacology past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Law',
+                            'description' => 'Law past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Constitutional Law', 'description' => 'Constitutional Law past questions', 'is_active' => true],
+                                ['name' => 'Criminal Law', 'description' => 'Criminal Law past questions', 'is_active' => true],
+                                ['name' => 'International Law', 'description' => 'International Law past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Economics',
+                            'description' => 'Economics past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Microeconomics', 'description' => 'Microeconomics past questions', 'is_active' => true],
+                                ['name' => 'Macroeconomics', 'description' => 'Macroeconomics past questions', 'is_active' => true],
+                                ['name' => 'Econometrics', 'description' => 'Econometrics past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Accounting',
+                            'description' => 'Accounting past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Financial Accounting', 'description' => 'Financial Accounting past questions', 'is_active' => true],
+                                ['name' => 'Managerial Accounting', 'description' => 'Managerial Accounting past questions', 'is_active' => true],
+                                ['name' => 'Tax Accounting', 'description' => 'Tax Accounting past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Marketing',
+                            'description' => 'Marketing past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Market Research', 'description' => 'Market Research past questions', 'is_active' => true],
+                                ['name' => 'Digital Marketing', 'description' => 'Digital Marketing past questions', 'is_active' => true],
+                                ['name' => 'Sales Management', 'description' => 'Sales Management past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Nursing',
+                            'description' => 'Nursing past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Pediatric Nursing', 'description' => 'Pediatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Geriatric Nursing', 'description' => 'Geriatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Critical Care Nursing', 'description' => 'Critical Care Nursing past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Education',
+                            'description' => 'Education past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Curriculum Development', 'description' => 'Curriculum Development past questions', 'is_active' => true],
+                                ['name' => 'Educational Psychology', 'description' => 'Educational Psychology past questions', 'is_active' => true],
+                                ['name' => 'Special Education', 'description' => 'Special Education past questions', 'is_active' => true]
+                            ]
+                        ]
                     ]
+
                 ],
                 [
                     'name' => 'Kenya',
                     'description' => 'University past questions in Kenya',
                     'is_active' => true,
                     'children' => [
-                        ['name' => 'Engineering', 'description' => 'Engineering past questions', 'is_active' => true],
-                        ['name' => 'Medicine', 'description' => 'Medicine past questions', 'is_active' => true],
-                        ['name' => 'Law', 'description' => 'Law past questions', 'is_active' => true],
-                        ['name' => 'Business Administration', 'description' => 'Business Administration past questions', 'is_active' => true],
-                        ['name' => 'Computer Science', 'description' => 'Computer Science past questions', 'is_active' => true],
-                        ['name' => 'Economics', 'description' => 'Economics past questions', 'is_active' => true],
-                        ['name' => 'Accounting', 'description' => 'Accounting past questions', 'is_active' => true],
-                        ['name' => 'Marketing', 'description' => 'Marketing past questions', 'is_active' => true],
-                        ['name' => 'Nursing', 'description' => 'Nursing past questions', 'is_active' => true],
-                        ['name' => 'Education', 'description' => 'Education past questions', 'is_active' => true],
-                        // Add other courses as needed
+                        [
+                            'name' => 'Computer Science',
+                            'description' => 'Computer Science past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Data Structures', 'description' => 'Data Structures past questions', 'is_active' => true],
+                                ['name' => 'Algorithms', 'description' => 'Algorithms past questions', 'is_active' => true],
+                                ['name' => 'Operating Systems', 'description' => 'Operating Systems past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Business Administration',
+                            'description' => 'Business Administration past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Management', 'description' => 'Management past questions', 'is_active' => true],
+                                ['name' => 'Human Resources', 'description' => 'Human Resources past questions', 'is_active' => true],
+                                ['name' => 'Marketing', 'description' => 'Marketing past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Engineering',
+                            'description' => 'Engineering past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Mechanical Engineering', 'description' => 'Mechanical Engineering past questions', 'is_active' => true],
+                                ['name' => 'Electrical Engineering', 'description' => 'Electrical Engineering past questions', 'is_active' => true],
+                                ['name' => 'Civil Engineering', 'description' => 'Civil Engineering past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Medicine',
+                            'description' => 'Medicine past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Anatomy', 'description' => 'Anatomy past questions', 'is_active' => true],
+                                ['name' => 'Physiology', 'description' => 'Physiology past questions', 'is_active' => true],
+                                ['name' => 'Pharmacology', 'description' => 'Pharmacology past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Law',
+                            'description' => 'Law past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Constitutional Law', 'description' => 'Constitutional Law past questions', 'is_active' => true],
+                                ['name' => 'Criminal Law', 'description' => 'Criminal Law past questions', 'is_active' => true],
+                                ['name' => 'International Law', 'description' => 'International Law past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Economics',
+                            'description' => 'Economics past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Microeconomics', 'description' => 'Microeconomics past questions', 'is_active' => true],
+                                ['name' => 'Macroeconomics', 'description' => 'Macroeconomics past questions', 'is_active' => true],
+                                ['name' => 'Econometrics', 'description' => 'Econometrics past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Accounting',
+                            'description' => 'Accounting past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Financial Accounting', 'description' => 'Financial Accounting past questions', 'is_active' => true],
+                                ['name' => 'Managerial Accounting', 'description' => 'Managerial Accounting past questions', 'is_active' => true],
+                                ['name' => 'Tax Accounting', 'description' => 'Tax Accounting past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Marketing',
+                            'description' => 'Marketing past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Market Research', 'description' => 'Market Research past questions', 'is_active' => true],
+                                ['name' => 'Digital Marketing', 'description' => 'Digital Marketing past questions', 'is_active' => true],
+                                ['name' => 'Sales Management', 'description' => 'Sales Management past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Nursing',
+                            'description' => 'Nursing past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Pediatric Nursing', 'description' => 'Pediatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Geriatric Nursing', 'description' => 'Geriatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Critical Care Nursing', 'description' => 'Critical Care Nursing past questions', 'is_active' => true]
+                            ]
+                        ],
+                        [
+                            'name' => 'Education',
+                            'description' => 'Education past questions',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Curriculum Development', 'description' => 'Curriculum Development past questions', 'is_active' => true],
+                                ['name' => 'Educational Psychology', 'description' => 'Educational Psychology past questions', 'is_active' => true],
+                                ['name' => 'Special Education', 'description' => 'Special Education past questions', 'is_active' => true]
+                            ]
+                        ]
                     ]
+
                 ]
             ]
         ],

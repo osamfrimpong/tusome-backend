@@ -59,8 +59,10 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'category_id' => 'required|exists:categories,id',
-            'sub_category_id' => 'required|exists:categories,id',
+            'main_category_id' => 'required|exists:categories,id',
+            'country_category_id' => 'required|exists:categories,id',
+            'type_category_id' => 'required|exists:categories,id',
+            'subject_category_id' => 'required|exists:categories,id',
             'year' => 'required|integer|min:2000|max:' . date('Y'),
             'question_content' => [
                 'required',
@@ -81,8 +83,13 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'sub_category_id', 'year', 'is_active', 'published_at']);
+        $data = $request->only(['year', 'is_active', 'published_at']);
         $data['question_content'] = json_decode($request->get('question_content'), true);
+        $data['category_id'] = $request->get('subject_category_id');
+        $data['category_details'] = ['main_category_id' => $request->get('main_category_id'),
+            'country_category_id' => $request->get('country_category_id'),
+            'type_category_id' => $request->get('type_category_id'),
+            'subject_category_id' => $request->get('subject_category_id')];
 
         $result = $this->questionService->create($data);
 
@@ -129,8 +136,10 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         $validation = Validator::make($request->all(), [
-            'category_id' => 'required|exists:categories,id',
-            'sub_category_id' => 'required|exists:categories,id',
+            'main_category_id' => 'required|exists:categories,id',
+            'country_category_id' => 'required|exists:categories,id',
+            'type_category_id' => 'required|exists:categories,id',
+            'subject_category_id' => 'required|exists:categories,id',
             'year' => 'required|integer|min:2000|max:' . date('Y'),
             'question_content' => [
                 'required',
@@ -151,8 +160,13 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'sub_category_id', 'year', 'is_active', 'published_at']);
+        $data = $request->only(['year', 'is_active', 'published_at']);
         $data['question_content'] = json_decode($request->get('question_content'), true);
+        $data['category_id'] = $request->get('subject_category_id');
+        $data['category_details'] = ['main_category_id' => $request->get('main_category_id'),
+            'country_category_id' => $request->get('country_category_id'),
+            'type_category_id' => $request->get('type_category_id'),
+            'subject_category_id' => $request->get('subject_category_id')];
 
         $result = $this->questionService->update($data, $question->id);
 
@@ -176,4 +190,6 @@ class QuestionController extends Controller
             return redirect()->back()->with('error', $result['message']);
         }
     }
+
+
 }
