@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\API\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth:web','admin'])->prefix('/admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'home'])->name('home');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('questions', QuestionController::class);
+    Route::get('/users', [AdminDashboardController::class, 'users'])->name('users');
+    Route::get('/get-subcategories/{categoryId}', [QuestionController::class, 'getSubCategories']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::get('/',[]);
+
+require __DIR__ . '/auth.php';

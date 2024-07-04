@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->foreignId('category_id')->references('id')->on('categories');
-            $table->string('subject');
+            $table->json('category_details');
             $table->integer('year');
             $table->json('question_content');
             $table->boolean('is_active')->default(true);
