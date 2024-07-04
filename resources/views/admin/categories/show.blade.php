@@ -18,6 +18,31 @@
             </form>
         </div>
     </div>
+   <strong> Child Categories</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($category->children as $categoryChild)
+            <tr>
+                <td><a href="{{ route('admin.categories.show', $categoryChild->id) }}">{{ $categoryChild->name }}</a></td>
+                <td>{{ $categoryChild->description }}</td>
+                <td>
+                    <a href="{{ route('admin.categories.edit', $categoryChild->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('admin.categories.destroy', $categoryChild->id) }}" method="POST" style="display:inline-block;">
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
     <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Back to Categories</a>
 </div>
 @endsection

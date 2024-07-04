@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONT_END_URL'),"*"],
+    'allowed_origins' => ["https://tusome-xi.vercel.app/"],
 
     'allowed_origins_patterns' => [],
 

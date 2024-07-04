@@ -7,9 +7,9 @@ use App\Models\Category;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-    public function all()
+    public function all(): \Illuminate\Database\Eloquent\Collection|array
     {
-        return Category::paginate(100);
+        return Category::with('children')->whereNull('parent_id')->get();
     }
 
     public function create(array $data)
@@ -31,6 +31,6 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function find($id)
     {
-        return Category::findOrFail($id);
+        return Category::with('children')->findOrFail($id);
     }
 }

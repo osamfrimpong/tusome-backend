@@ -41,10 +41,16 @@ class QuestionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $categories = Category::all();
-        return view('admin.questions.create', compact('categories'));
+        $categories = Category::whereNull('parent_id')->get();
+        $subCategories = collect();
+
+        if ($request->has('category_id')) {
+            $subCategories = Category::where('parent_id', $request->input('category_id'))->get();
+        }
+
+        return view('admin.questions.create', compact('categories', 'subCategories'));
     }
 
     /**
@@ -53,9 +59,11 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'category_id' => 'required|integer',
-            'subject' => 'required|string',
-            'year' => 'required|integer',
+            'main_category_id' => 'required|exists:categories,id',
+            'country_category_id' => 'required|exists:categories,id',
+            'type_category_id' => 'required|exists:categories,id',
+            'subject_category_id' => 'required|exists:categories,id',
+            'year' => 'required|integer|min:2000|max:' . date('Y'),
             'question_content' => [
                 'required',
                 function ($attribute, $value, $fail) {
@@ -75,8 +83,13 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'subject', 'year', 'is_active', 'published_at']);
+        $data = $request->only(['year', 'is_active', 'published_at']);
         $data['question_content'] = json_decode($request->get('question_content'), true);
+        $data['category_id'] = $request->get('subject_category_id');
+        $data['category_details'] = ['main_category_id' => $request->get('main_category_id'),
+            'country_category_id' => $request->get('country_category_id'),
+            'type_category_id' => $request->get('type_category_id'),
+            'subject_category_id' => $request->get('subject_category_id')];
 
         $result = $this->questionService->create($data);
 
@@ -111,8 +124,10 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        $categories = Category::all();
-        return view('admin.questions.edit', compact('question', 'categories'));
+        $categories = Category::whereNull('parent_id')->get();
+        $subCategories = Category::where('parent_id', $question->category_id)->get();
+
+        return view('admin.questions.edit', compact('question', 'categories', 'subCategories'));
     }
 
     /**
@@ -121,9 +136,11 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         $validation = Validator::make($request->all(), [
-            'category_id' => 'required|integer',
-            'subject' => 'required|string',
-            'year' => 'required|integer',
+            'main_category_id' => 'required|exists:categories,id',
+            'country_category_id' => 'required|exists:categories,id',
+            'type_category_id' => 'required|exists:categories,id',
+            'subject_category_id' => 'required|exists:categories,id',
+            'year' => 'required|integer|min:2000|max:' . date('Y'),
             'question_content' => [
                 'required',
                 function ($attribute, $value, $fail) {
@@ -143,8 +160,13 @@ class QuestionController extends Controller
             return redirect()->back()->withInput()->withErrors($validation->errors());
         }
 
-        $data = $request->only(['category_id', 'subject', 'year', 'is_active', 'published_at']);
+        $data = $request->only(['year', 'is_active', 'published_at']);
         $data['question_content'] = json_decode($request->get('question_content'), true);
+        $data['category_id'] = $request->get('subject_category_id');
+        $data['category_details'] = ['main_category_id' => $request->get('main_category_id'),
+            'country_category_id' => $request->get('country_category_id'),
+            'type_category_id' => $request->get('type_category_id'),
+            'subject_category_id' => $request->get('subject_category_id')];
 
         $result = $this->questionService->update($data, $question->id);
 
@@ -168,4 +190,6 @@ class QuestionController extends Controller
             return redirect()->back()->with('error', $result['message']);
         }
     }
+
+
 }
