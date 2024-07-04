@@ -23,6 +23,7 @@ Route::middleware(['auth:web','admin'])->prefix('/admin')->name('admin.')->group
     Route::resource('categories', CategoryController::class);
     Route::resource('questions', QuestionController::class);
     Route::get('/users', [AdminDashboardController::class, 'users'])->name('users');
+    Route::get('/get-subcategories/{categoryId}', [QuestionController::class, 'getSubCategories']);
 });
 
 Route::middleware('auth')->group(function () {

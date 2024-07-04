@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\LandingPageController;
+use App\Http\Controllers\API\QuestionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,6 @@ Route::get('/categories', [LandingPageController::class, 'categories'])->name('c
 //Authentication
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+
+
+Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubCategories']);

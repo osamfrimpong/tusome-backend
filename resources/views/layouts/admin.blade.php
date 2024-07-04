@@ -18,9 +18,9 @@
         <!-- Sidebar scroll-->
         <div>
             <div class="brand-logo d-flex align-items-center justify-content-between">
-                <a href="./index.html" class="text-nowrap logo-img">
-                    <img src="{{ asset('admin-assets/images/logos/dark-logo.svg') }}" width="180" alt=""/>
-                </a>
+                <span class="text-nowrap logo-img" style="font-weight: bold; font-size: large">
+                    Tusome - Admin
+                </span>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-8"></i>
                 </div>
@@ -90,6 +90,11 @@
                         </a>
                     </li>
                 </ul>
+                <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                       {{auth()->user()->name}}
+                    </ul>
+                </div>
             </nav>
         </header>
         <!--  Header End -->
@@ -103,6 +108,8 @@
 <script src="{{ asset('admin-assets/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('admin-assets/js/app.min.js') }}"></script>
 <script src="{{ asset('admin-assets/libs/simplebar/dist/simplebar.js') }}"></script>
+
+@yield('scripts')
 </body>
 
 </html>

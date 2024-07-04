@@ -162,4 +162,9 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', $result['message']);
         }
     }
+
+    public function getSubcategories(Category $categoryId)
+    {
+        return response()->json($categoryId->children);
+    }
 }
