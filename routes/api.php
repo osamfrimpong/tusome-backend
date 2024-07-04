@@ -27,13 +27,14 @@ use Illuminate\Support\Facades\Route;
 //Admin Dashboard
 
 
-//Landing page
+// Landing page
 Route::get('/', [LandingPageController::class, 'home'])->name('home');
 Route::get('/categories', [LandingPageController::class, 'categories'])->name('categories');
 
-//Authentication
+// Authentication
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-
+Route::get('/auth-check', [AuthController::class, 'checkAuth'])->name('api.auth-check');
+Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
 Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubCategories']);
