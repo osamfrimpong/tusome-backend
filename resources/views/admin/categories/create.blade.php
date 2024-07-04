@@ -28,9 +28,12 @@
             </select>
         </div>
 
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1" {{ old('is_active') ? 'checked' : '' }}>
-            <label class="form-check-label" for="is_active">Active</label>
+        <div class="form-group">
+            <label for="is_active">Active</label>
+            <select name="is_active" id="is_active" class="form-control" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Create Category</button>

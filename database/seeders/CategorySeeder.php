@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    protected $categories = [
+    protected static $categories = [
         [
             'name' => 'High School',
             'description' => 'Past questions for high schools in Ghana and Kenya',
@@ -35,7 +35,28 @@ class CategorySeeder extends Seeder
                                 ['name' => 'Geography', 'description' => 'Geography past questions', 'is_active' => true],
                                 ['name' => 'History', 'description' => 'History past questions', 'is_active' => true],
                                 ['name' => 'Literature', 'description' => 'Literature past questions', 'is_active' => true],
-                                // Add other subjects as needed
+                                ['name' => 'General Agriculture', 'description' => 'General Agriculture past questions', 'is_active' => true],
+                                ['name' => 'Elective Mathematics', 'description' => 'Elective Mathematics past questions', 'is_active' => true],
+                                ['name' => 'Elective ICT', 'description' => 'Elective ICT past questions', 'is_active' => true],
+                                ['name' => 'French', 'description' => 'French past questions', 'is_active' => true],
+                                ['name' => 'Christian Religious Studies', 'description' => 'Christian Religious Studies past questions', 'is_active' => true],
+                                ['name' => 'Government', 'description' => 'Government past questions', 'is_active' => true],
+                                ['name' => 'Cost Accounting', 'description' => 'Cost Accounting past questions', 'is_active' => true],
+                                ['name' => 'Financial Accounting', 'description' => 'Financial Accounting past questions', 'is_active' => true],
+                                ['name' => 'Business Management', 'description' => 'Business Management past questions', 'is_active' => true],
+                                ['name' => 'Food and Nutrition', 'description' => 'Food and Nutrition past questions', 'is_active' => true],
+                                ['name' => 'Management in Living', 'description' => 'Management in Living past questions', 'is_active' => true],
+                                ['name' => 'Textiles', 'description' => 'Textiles past questions', 'is_active' => true],
+                                ['name' => 'Arts', 'description' => 'Arts past questions', 'is_active' => true],
+                                ['name' => 'Graphic Design', 'description' => 'Graphic Design past questions', 'is_active' => true],
+                                ['name' => 'Basketry', 'description' => 'Basketry past questions', 'is_active' => true],
+                                ['name' => 'Sculpture', 'description' => 'Sculpture past questions', 'is_active' => true],
+                                ['name' => 'Ceramics', 'description' => 'Ceramics past questions', 'is_active' => true],
+                                ['name' => 'Leatherwork', 'description' => 'Leatherwork past questions', 'is_active' => true],
+                                ['name' => 'Animal Husbandry', 'description' => 'Animal Husbandry past questions', 'is_active' => true],
+                                ['name' => 'Electrical Engineering', 'description' => 'Electrical Engineering past questions', 'is_active' => true],
+                                ['name' => 'Woodwork', 'description' => 'Woodwork past questions', 'is_active' => true],
+                                ['name' => 'Building and Construction', 'description' => 'Building and Construction past questions', 'is_active' => true],
                             ]
                         ],
                         [
@@ -137,7 +158,27 @@ class CategorySeeder extends Seeder
                     'is_active' => true,
                     'children' => [
                         ['name' => 'Teacher Training', 'description' => 'Teacher training college past questions', 'is_active' => true],
-                        ['name' => 'Nursing Training', 'description' => 'Nursing training college past questions', 'is_active' => true],
+                        [
+                            'name' => 'Nursing Training College',
+                            'description' => 'Past questions for nursing training colleges',
+                            'is_active' => true,
+                            'children' => [
+                                ['name' => 'Anatomy and Physiology', 'description' => 'Anatomy and Physiology past questions', 'is_active' => true],
+                                ['name' => 'Pharmacology', 'description' => 'Pharmacology past questions', 'is_active' => true],
+                                ['name' => 'Medical Nursing', 'description' => 'Medical-Surgical Nursing past questions', 'is_active' => true],
+                                ['name' => 'Pediatric Nursing', 'description' => 'Pediatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Community Health Nursing', 'description' => 'Community Health Nursing past questions', 'is_active' => true],
+                                ['name' => 'Psychiatric Nursing', 'description' => 'Psychiatric Nursing past questions', 'is_active' => true],
+                                ['name' => 'Midwifery', 'description' => 'Midwifery past questions', 'is_active' => true],
+                                ['name' => 'Community Health', 'description' => 'Community Health past questions', 'is_active' => true],
+                                ['name' => 'Nutrition', 'description' => 'Nutrition past questions', 'is_active' => true],
+                                ['name' => 'Health Promotion', 'description' => 'Health Promotion past questions', 'is_active' => true],
+                                ['name' => 'Environmental Health', 'description' => 'Environmental Health past questions', 'is_active' => true],
+                                ['name' => 'Maternal and Child Health', 'description' => 'Maternal and Child Health past questions', 'is_active' => true],
+                                ['name' => 'Gynecology', 'description' => 'Gynecology past questions', 'is_active' => true],
+                                // Add other subjects as needed
+                            ]
+                        ],
                         ['name' => 'Technical Training', 'description' => 'Technical training college past questions', 'is_active' => true],
                         ['name' => 'Agricultural Training', 'description' => 'Agricultural training college past questions', 'is_active' => true],
                         // Add other categories as needed
@@ -165,7 +206,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         // Recursive function to create categories and subcategories
-        function createCategories(array $categories, $parentId = null) {
+        function createCategories(array $categories, $parentId = null)
+        {
             foreach ($categories as $categoryData) {
                 $children = $categoryData['children'] ?? [];
                 unset($categoryData['children']);
@@ -178,6 +220,6 @@ class CategorySeeder extends Seeder
         }
 
         // Call the function to seed the categories
-        createCategories($this->categories);
+        createCategories(static::$categories);
     }
 }

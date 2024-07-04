@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="question_content">Question Content</label>
-                    <textarea name="question_content" id="question_content" class="form-control" required>{{ $question->question_content }}</textarea>
+                    <textarea name="question_content" id="question_content" class="form-control" required>{{ json_encode($question->question_content) }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="is_active">Active</label>

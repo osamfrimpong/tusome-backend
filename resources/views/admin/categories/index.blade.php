@@ -2,13 +2,17 @@
 
 @section('main-content')
 <div class="container">
-    <h1>Categories</h1>
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary mb-3">Create Category</a>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h4 style="margin: 0;">Categories</h4>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-primary">Create Category</a>
+    </div>
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
+
     <table class="table">
         <thead>
             <tr>
