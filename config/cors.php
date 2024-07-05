@@ -19,8 +19,10 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ["https://tusome-xi.vercel.app/,
-        https://tusome-frontend-practice.vercel.app/"],
+    'allowed_origins' => [
+        'https://tusome-xi.vercel.app',
+        'https://tusome-frontend-practice.vercel.app'
+    ],
 
     'allowed_origins_patterns' => [],
 
