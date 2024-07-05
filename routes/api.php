@@ -5,7 +5,6 @@ use App\Http\Controllers\API\BookmarkController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\LandingPageController;
 use App\Http\Controllers\API\ProgressController;
-use App\Http\Controllers\API\QuestionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //User Dashboard
-Route::middleware('auth:sanctum')->prefix('/dashboard')->group(function (Request $request) {
+Route::middleware('auth:sanctum')->prefix('/dashboard')->group(function () {
     Route::resource('/bookmarks', BookmarkController::class);
     Route::resource('/progress', ProgressController::class);
 })->name('dashboard.');
 
-
 //Admin Dashboard
-
 
 // Landing page
 Route::get('/', [LandingPageController::class, 'home'])->name('home');
