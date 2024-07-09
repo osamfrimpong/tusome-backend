@@ -5,7 +5,6 @@ use App\Http\Controllers\API\BookmarkController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\LandingPageController;
 use App\Http\Controllers\API\ProgressController;
-use App\Http\Controllers\API\QuestionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +25,7 @@ Route::middleware('auth:sanctum')->prefix('/dashboard')->group(function () {
     Route::resource('/progress', ProgressController::class);
 })->name('dashboard.');
 
-
 //Admin Dashboard
-
 
 // Landing page
 Route::get('/home', [LandingPageController::class, 'home'])->name('home');
@@ -41,7 +38,6 @@ Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('
 // Authentication
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-Route::get('/auth-check', [AuthController::class, 'checkAuth'])->name('api.auth-check');
 Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
 Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubCategories']);

@@ -19,7 +19,9 @@ return [
 
     'allowed_methods' => ['POST','GET','PUT','PATCH','DELETE'],
 
+
     'allowed_origins' => ["https://tusome-xi.vercel.app/",env("FRONT_END_URL"), "https://tusome-frontend-practice.vercel.app/"],
+
 
     'allowed_origins_patterns' => [],
 
