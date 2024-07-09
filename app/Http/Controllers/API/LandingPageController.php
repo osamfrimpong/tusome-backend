@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,11 @@ class LandingPageController extends Controller
     }
     public function home()
     {
+
+
+        $categories = Category::with('questions')->whereHas('questions')->limit(4)->get();
+
+        return response()->json(["categories" => $categories]);
 
     }
 

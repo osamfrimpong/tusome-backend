@@ -17,9 +17,9 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST','GET','PUT','PATCH','DELETE'],
 
-    'allowed_origins' => ["https://tusome-xi.vercel.app/"],
+    'allowed_origins' => ["https://tusome-xi.vercel.app/",env("FRONT_END_URL"), "https://tusome-frontend-practice.vercel.app/"],
 
     'allowed_origins_patterns' => [],
 
@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];
