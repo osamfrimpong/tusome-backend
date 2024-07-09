@@ -28,8 +28,12 @@ Route::middleware('auth:sanctum')->prefix('/dashboard')->group(function () {
 //Admin Dashboard
 
 // Landing page
-Route::get('/', [LandingPageController::class, 'home'])->name('home');
+Route::get('/home', [LandingPageController::class, 'home'])->name('home');
 Route::get('/categories', [LandingPageController::class, 'categories'])->name('categories');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
+Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('question');
+
 
 // Authentication
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
