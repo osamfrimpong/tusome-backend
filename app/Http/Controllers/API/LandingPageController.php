@@ -26,11 +26,64 @@ class LandingPageController extends Controller
 
     }
 
+
     public function categories()
     {
-        return $this->categoryService->getAll();
+        // Get all categories
+        $categories = Category::all();
+
+        // Build nested tree structure
+        $categoryTree = $this->buildTree($categories);
+
+        // Convert the category tree to array
+        $categoryTreeArray = $this->treeToArray($categoryTree);
+
+        // Return the JSON response
+        return response()->json($categoryTreeArray, 200, [], JSON_PRETTY_PRINT);
     }
 
+    /**
+     * Build nested category tree.
+     *
+     * @param \Illuminate\Support\Collection $categories
+     * @param int|null $parentId
+     * @return array
+     */
+    private function buildTree($categories, $parentId = null)
+    {
+        $branch = array();
+
+        foreach ($categories as $category) {
+            if ($category->parent_id == $parentId) {
+                $children = $this->buildTree($categories, $category->id);
+                if ($children) {
+                    $category->children = $children;
+                }
+                $branch[] = $category;
+            }
+        }
+
+        return $branch;
+    }
+
+    /**
+     * Convert category tree to array.
+     *
+     * @param array $categories
+     * @return array
+     */
+    private function treeToArray($categories)
+    {
+        $array = array();
+        foreach ($categories as $category) {
+            $categoryArray = $category->toArray();
+            if (isset($categoryArray['children'])) {
+                $categoryArray['children'] = $this->treeToArray($categoryArray['children']);
+            }
+            $array[] = $categoryArray;
+        }
+        return $array;
+    }
 
     public function about()
     {
