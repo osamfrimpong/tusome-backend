@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BookmarkController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\LandingPageController;
 use App\Http\Controllers\API\ProgressController;
+use App\Http\Controllers\API\QuestionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
