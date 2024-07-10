@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LandingPageController extends Controller
 {
@@ -29,14 +30,20 @@ class LandingPageController extends Controller
 
     public function categories()
     {
-        // Get all categories
-        $categories = Category::all();
+        // Cache key
+        $cacheKey = 'categories_with_questions';
 
-        // Build nested tree structure
-        $categoryTree = $this->buildTree($categories);
+        // Check if the cached data exists
+        $categoryTreeArray = Cache::remember($cacheKey, 60 * 60 * 24, function () {
+            // Get all categories
+            $categories = Category::with('questions')->get();
 
-        // Convert the category tree to array
-        $categoryTreeArray = $this->treeToArray($categoryTree);
+            // Build nested tree structure
+            $categoryTree = $this->buildTree($categories);
+
+            // Convert the category tree to array
+            return $this->treeToArray($categoryTree);
+        });
 
         // Return the JSON response
         return response()->json($categoryTreeArray, 200, [], JSON_PRETTY_PRINT);
