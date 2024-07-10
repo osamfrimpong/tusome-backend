@@ -43,3 +43,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
 Route::get('/categories/{categoryId}/subcategories', [CategoryController::class, 'getSubCategories']);
 
+Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubCategories']);
